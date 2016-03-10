@@ -26,3 +26,5 @@ to use app.php
 * apc or accelerator
 * php timezone configuration as variable
 * symfony specifics inside the container for use with docker -it exec name bash
+* Variable or -v for Session - directory for __HA__ use
+* database abilites of php configuration
