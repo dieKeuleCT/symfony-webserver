@@ -13,3 +13,4 @@ RUN apt-get update && apt-get install -y libmemcached-dev \
 ADD php.ini /usr/local/etc/php/php.ini
 ADD apache2.conf /etc/apache2/apache2.conf
 ADD symfony-apache.conf /etc/apache2/sites-available/000-default.conf
+RUN a2enmod rewrite
