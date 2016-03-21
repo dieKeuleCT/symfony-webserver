@@ -3,6 +3,8 @@
 Just a simple image to run some symfony projects with a default configuration. Base is the official PHP image with apache 
 webserver.
 
+It is used on our hosting projects, so it is actively maintained.
+
 Webserver is configured to have a Symfony 2/3 file/directory structure in the default hosting. Rewriting is configured 
 to use app.php
 
