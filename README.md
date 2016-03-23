@@ -1,12 +1,21 @@
 # symfony-webserver
 
-Just a simple image to run some symfony projects with a default configuration. Base is the official PHP image with apache 
+Just a simple image to run some symfony projects with a default configuration. Base is the official PHP 5.6 image with apache 
 webserver.
 
-It is used on our hosting projects, so it is actively maintained.
+Features:
+* default configuration for symfony 2/3 projects just ready to use
+* PHP Acceleration via __opcache__
+* __composer__ installed in /usr/bin/composer
+* _GIT-Client_ for use with composer
+* _ZIP/UNZIP_ for use with composer
+* _MYSQL_ and _PDO_ enabled
+* _MYSQL Client packages_ installed
+* __Symfony 2.0 Projects may need an update (PDO serialize/deserialize issues with newer PHP Version)__ (correct: this issue is doctrine related, not symfony)
 
-Webserver is configured to have a Symfony 2/3 file/directory structure in the default hosting. Rewriting is configured 
-to use app.php
+This image is used in our hosting projects, so it is actively maintained but as of now it is __NOT__ in a stable state as it is required for any production use.
+
+Webserver is configured to have a Symfony 2/3 file and directory structure in the default hosting. Rewriting is configured to use app.php
 
 
 ## config-options
