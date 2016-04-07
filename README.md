@@ -16,6 +16,7 @@ Features:
 This image is used in our hosting projects, so it is actively maintained but as of now it is __NOT__ in a stable state as it is required for any production use.
 
 Webserver is configured to have a Symfony 2/3 file and directory structure in the default hosting. Rewriting is configured to use app.php
+There is a postfix mta integrated for use with php mail() - configuration see __config-variables__
 
 
 ## config-options
@@ -31,11 +32,14 @@ Webserver is configured to have a Symfony 2/3 file and directory structure in th
 ### override log directory
 -v [your-log-dir]:/var/log/httpd/ 
 
+## config-variables
+### postfix relay host for sending emails
+-e RELAY_HOST=<relay>
+__the relay host needs to have your ip in trusted__
+-e MASQ_DOMAINS=<masq domains>
+
 
 ## TODOs
 * Variable for debug mode
-* apc or accelerator
 * php timezone configuration as variable
-* symfony specifics inside the container for use with docker -it exec name bash
 * Variable or -v for Session - directory for __HA__ use
-* database abilites of php configuration
