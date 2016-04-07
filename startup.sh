@@ -13,8 +13,6 @@ if [ ! -f /firstrundone ]; then
 	echo "done" >> /firstrundone
 fi
 
-service syslog start
 service postfix start
-service crond start
 
-apachectl -D FOREGROUND
+apache2-foreground

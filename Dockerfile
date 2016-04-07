@@ -18,8 +18,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 ADD php.ini /usr/local/etc/php/php.ini
 ADD apache2.conf /etc/apache2/apache2.conf
 ADD symfony-apache.conf /etc/apache2/sites-available/000-default.conf
-ADD startup.sh /startup.sh
+ADD startup.sh /usr/local/startup.sh
 # Enable rewrite and install composer for use in symfony 
-RUN a2enmod rewrite && mkdir /composer-setup && wget https://getcomposer.org/installer -P /composer-setup && php /composer-setup/installer --install-dir=/usr/bin && rm -Rf /composer-setup && curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony
+RUN a2enmod rewrite && mkdir /composer-setup && wget https://getcomposer.org/installer -P /composer-setup && php /composer-setup/installer --install-dir=/usr/bin && rm -Rf /composer-setup && curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony && chmod +x /usr/local/startup.sh
 
-CMD ["/startup.sh"]
+CMD ["/bin/bash /usr/local/startup.sh"]
