@@ -1,7 +1,7 @@
 FROM php:5.6-apache
 MAINTAINER dieKeuleCT<koehlmeier@gmail.com>
 # install some extensions
-RUN apt-get update && apt-get install -y \
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
