@@ -22,4 +22,4 @@ ADD startup.sh /usr/local/startup.sh
 # Enable rewrite and install composer for use in symfony 
 RUN a2enmod rewrite && mkdir /composer-setup && wget https://getcomposer.org/installer -P /composer-setup && php /composer-setup/installer --install-dir=/usr/bin && rm -Rf /composer-setup && curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony && chmod +x /usr/local/startup.sh
 
-CMD ["/bin/bash /usr/local/startup.sh"]
+CMD "/usr/local/startup.sh"
