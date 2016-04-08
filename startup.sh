@@ -13,7 +13,7 @@ if [ ! -f /firstrundone ]; then
 	echo "done" >> /firstrundone
 fi
 
-service crond start
+service cron start
 service postfix start
 
 apache2-foreground
