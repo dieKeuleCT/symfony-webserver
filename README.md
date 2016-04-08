@@ -24,18 +24,27 @@ There is a postfix mta integrated for use with php mail() - configuration see __
 ### Webroot
 -v [your-wwwroot]:/var/www/html/
 ### override default hosting config
--v [your-vhost-conf]:/etc/apache2/sites-available/000-default.conf
+-v [your-vhost-conf]:/etc/apache2/sites-available/000-default.conf:ro
 ### override php.ini
--v [your-php.ini]:/usr/local/etc/php/php.ini
+-v [your-php.ini]:/usr/local/etc/php/php.ini:ro
 ### override general apache config 
--v [your-apache2.conf]:/etc/apache2/apache2.conf
+-v [your-apache2.conf]:/etc/apache2/apache2.conf:ro
 ### override log directory
 -v [your-log-dir]:/var/log/httpd/ 
+### crontabs
+-v [your-cron-dir]:/var/spool/cron
 
 ## config-variables
 ### postfix relay host for sending emails
+#### enable email service
+-e START_MAILDELIVERY=TRUE enables postfix service at startup
+#### enable cron service
+-e START_CRON=TRUE enables cron service at startup (if you need some crons in your project)
+see also __crontabs__ in __config-options__ 
+#### e-mail relaying 
 -e RELAY_HOST=<relay>
 __the relay host needs to have your ip in trusted__
+#### e-mail masquerading
 -e MASQ_DOMAINS=<masq domains>
 
 

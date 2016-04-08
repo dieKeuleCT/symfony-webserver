@@ -13,7 +13,14 @@ if [ ! -f /firstrundone ]; then
 	echo "done" >> /firstrundone
 fi
 
-service cron start
-service postfix start
+# start cron if configured
+if [ "$START_CRON" != "" ]; then
+        service cron start
+fi
+
+# start mail if configured
+if [ "$START_MAILDELIVERY" != "" ]; then
+        service postfix start
+fi
 
 apache2-foreground
