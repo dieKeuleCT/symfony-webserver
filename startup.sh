@@ -20,6 +20,7 @@ fi
 
 # start mail if configured
 if [ "$START_MAILDELIVERY" != "" ]; then
+        service inetutils-syslogd start
         service postfix start
 fi
 
