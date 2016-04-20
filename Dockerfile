@@ -16,7 +16,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         cron \
         vim \
         inetutils-syslogd \
-    && docker-php-ext-install -j$(nproc) iconv intlmcrypt opcache pdo pdo_mysql mysqli mysql mbstring soap xml zip int \
+    && docker-php-ext-install -j$(nproc) iconv intlmcrypt opcache pdo pdo_mysql mysqli mysql mbstring soap xml zip intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 # adding some configurations for apache, php
