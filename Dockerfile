@@ -8,6 +8,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         libpng12-dev \
         libxml2 \
         libxml2-dev \
+	libicu-dev \
         wget \
         mysql-client \
         unzip \
