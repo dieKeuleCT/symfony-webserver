@@ -17,11 +17,12 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         cron \
         vim \
         inetutils-syslogd \
-	wkhtmltopdf \
     && docker-php-ext-install -j$(nproc) iconv intl mcrypt opcache pdo pdo_mysql mysqli mysql mbstring soap xml zip \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 # adding some configurations for apache, php
+ADD wkhtmltopdf /usr/local/bin/wkhtmltopdf
+ADD wkhtmltoimage /usr/local/bin/wkhtmltoimage
 ADD php.ini /usr/local/etc/php/php.ini
 ADD apache2.conf /etc/apache2/apache2.conf
 ADD symfony-apache.conf /etc/apache2/sites-available/000-default.conf
