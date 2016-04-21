@@ -26,10 +26,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 # adding some configurations for apache, php
 ADD wkhtmltopdf /usr/local/bin/wkhtmltopdf
 ADD wkhtmltoimage /usr/local/bin/wkhtmltoimage
-ADD wkhtmltox/lib/libwkhtmltox.so:/usr/local/lib/libwkhtmltox.so
-ADD wkhtmltox/lib/libwkhtmltox.so.0:/usr/local/lib/libwkhtmltox.so.0
-ADD wkhtmltox/lib/libwkhtmltox.so.0.12:/usr/local/lib/libwkhtmltox.so.0.12
-ADD wkhtmltox/lib/libwkhtmltox.so.0.12.2:/usr/local/lib/libwkhtmltox.so.0.12.2
+ADD wkhtmltox/lib/libwkhtmltox.so /usr/local/lib/libwkhtmltox.so
+ADD wkhtmltox/lib/libwkhtmltox.so.0 /usr/local/lib/libwkhtmltox.so.0
+ADD wkhtmltox/lib/libwkhtmltox.so.0.12 /usr/local/lib/libwkhtmltox.so.0.12
+ADD wkhtmltox/lib/libwkhtmltox.so.0.12.3 /usr/local/lib/libwkhtmltox.so.0.12.3
 ADD php.ini /usr/local/etc/php/php.ini
 ADD apache2.conf /etc/apache2/apache2.conf
 ADD symfony-apache.conf /etc/apache2/sites-available/000-default.conf
