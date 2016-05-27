@@ -33,6 +33,9 @@ There is a postfix mta integrated for use with php mail() - configuration see __
 -v [your-log-dir]:/var/log/httpd/ 
 ### crontabs
 -v [your-cron-dir]:/var/spool/cron
+### for use with reverse proxies (such as nginx)
+-v [your-rpaf.conf]:/etc/apache2/mods-available/rpaf.conf
+For documentation see https://github.com/gnif/mod_rpaf 
 
 ## config-variables
 ### postfix relay host for sending emails
