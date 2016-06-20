@@ -37,6 +37,6 @@ ADD symfony-apache.conf /etc/apache2/sites-available/000-default.conf
 ADD main.cf /etc/postfix/main.cf
 ADD startup.sh /usr/local/startup.sh
 # Enable rewrite and install composer for use in symfony
-RUN a2enmod rewrite && a2enmod rpaf && mkdir /composer-setup && wget https://getcomposer.org/installer -P /composer-setup && php /composer-setup/installer --install-dir=/usr/bin && rm -Rf /composer-setup && curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony && chmod +x /usr/local/startup.sh
+RUN a2enmod rewrite && a2enmod rpaf && a2enmod ssl && mkdir /composer-setup && wget https://getcomposer.org/installer -P /composer-setup && php /composer-setup/installer --install-dir=/usr/bin && rm -Rf /composer-setup && curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony && chmod +x /usr/local/startup.sh
 
 CMD "/usr/local/startup.sh"
