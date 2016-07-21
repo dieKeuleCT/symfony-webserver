@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:7-apache
 MAINTAINER dieKeuleCT<koehlmeier@gmail.com>
 # install some extensions
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
@@ -22,7 +22,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         libfontconfig1 \
         libapache2-mod-rpaf \
         logrotate \
-    && docker-php-ext-install -j$(nproc) iconv intl mcrypt opcache pdo pdo_mysql mysqli mysql mbstring soap xml zip \
+    && docker-php-ext-install -j$(nproc) iconv intl mcrypt opcache pdo pdo_mysql mbstring soap xml zip \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 # adding some configurations for apache, php
@@ -34,6 +34,7 @@ ADD wkhtmltox/lib/libwkhtmltox.so.0.12 /usr/local/lib/libwkhtmltox.so.0.12
 ADD wkhtmltox/lib/libwkhtmltox.so.0.12.3 /usr/local/lib/libwkhtmltox.so.0.12.3
 ADD php.ini /usr/local/etc/php/php.ini
 ADD apache2.conf /etc/apache2/apache2.conf
+ADD logrotate-apache2 /etc/logrotate.d/apache2
 ADD symfony-apache.conf /etc/apache2/sites-available/000-default.conf
 ADD main.cf /etc/postfix/main.cf
 ADD startup.sh /usr/local/startup.sh

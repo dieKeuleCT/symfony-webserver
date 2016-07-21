@@ -1,6 +1,10 @@
 # symfony-webserver
 
-Image to run some symfony projects with a default configuration. Base is the official PHP 5.6 image with apache webserver.
+## supported tags
+### latest: latest php (as of now php 7.0.8)
+### php-5.6: same image but with php-5.6
+
+Image to run some symfony projects with a default configuration. Base is the official PHP image with apache webserver.
 The image can be configured to have mail-delivery (postfix/sendmail wrapper) and cron activated as this is used in most of our projects. But there is no need to have these services enabled - it can be configured to save some server ressources.
 
 Features:
