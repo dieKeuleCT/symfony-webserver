@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:7.0-apache
 MAINTAINER dieKeuleCT<koehlmeier@gmail.com>
 # install some extensions
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
