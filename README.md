@@ -1,7 +1,9 @@
 # symfony-webserver
 
 ## supported tags
-### latest: latest php (as of now php 7.0.8)
+### latest: latest php (as of now php 7.1)
+### php-7.1: php 7.0 branch, most recent version of PHP 7.1
+### php-7.0: php 7.0 branch, most recent version of PHP 7.0
 ### php-5.6: same image but with php-5.6
 
 Image to run some symfony projects with a default configuration. Base is the official PHP image with apache webserver.
