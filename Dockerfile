@@ -22,7 +22,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         libfontconfig1 \
         libapache2-mod-rpaf \
         logrotate \
-    && pecl install mcrypt \
+    && pecl install mcrypt-1.0.2 \
     && docker-php-ext-install -j$(nproc) mysqli iconv intl mcrypt opcache pdo pdo_mysql mbstring soap xml zip \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
