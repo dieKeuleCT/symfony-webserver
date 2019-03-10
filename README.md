@@ -1,7 +1,8 @@
 # symfony-webserver
 
 ## supported tags
-### latest: latest php (as of now php 7.1)
+### latest: latest php with composer and http configuration for symfony 4.x
+### symfony3: latest php but with http configuration for symfony 2 and symfony 3 apps
 ### php-7.1: php 7.0 branch, most recent version of PHP 7.1
 ### php-7.0: php 7.0 branch, most recent version of PHP 7.0
 ### php-5.6: same image but with php-5.6
@@ -10,7 +11,7 @@ Image to run some symfony projects with a default configuration. Base is the off
 The image can be configured to have mail-delivery (postfix/sendmail wrapper) and cron activated as this is used in most of our projects. But there is no need to have these services enabled - it can be configured to save some server ressources.
 
 Features:
-* default configuration for symfony 2/3 projects just ready to use
+* default configuration for symfony 2/3/4 (depending on tags) projects just ready to use
 * PHP Acceleration via __opcache__
 * __composer__ installed in /usr/bin/composer
 * _GIT-Client_ for use with composer
@@ -19,9 +20,9 @@ Features:
 * _MYSQL Client packages_ installed
 * __Symfony 2.0 Projects may need an update (PDO serialize/deserialize issues with newer PHP Version)__ (correct: this issue is doctrine related, not symfony)
 
-This image is used in our hosting projects, so it is actively maintained but as of now it is __NOT__ in a stable state as it is required for any production use.
+This image is used in our hosting projects, so it is actively maintained but.
 
-Webserver is configured to have a Symfony 2/3 file and directory structure in the default hosting. Rewriting is configured to use app.php
+Webserver is configured to have a Symfony 2/3/4 (tags!!) file and directory structure in the default hosting. Rewriting is configured to use app.php (Symfony 2/3) or index.php in apps public folder (Symfony 4)
 There is a postfix mta integrated for use with php mail() - configuration see __config-variables__
 
 
@@ -56,8 +57,12 @@ __the relay host needs to have your ip in trusted__
 #### e-mail masquerading
 -e MASQ_DOMAINS=<masq domains>
 
-
-## TODOs
-* Variable for debug mode
-* php timezone configuration as variable
-* Variable or -v for Session - directory for __HA__ use
+## config variables for Symfony 4
+### SYMFONY_APP_ENV & SYMFONY_APP_DEBUG
+Variable to start Symfony4 in either prod or dev mode (eg. SYMFONY_APP_ENV=dev SYMFONY_APP_DEBUG=1)
+### SYMFONY_APP_SECRET
+Variable to configure APP Secret (eg. SYMFONY_APP_SECRET=mysecret)
+### SYMFONY_APP_DATABASE_URL=mysql://zeiterfassung:U5OGNjNWFk@zeiterfassunng_db:3306/zeiterfassung
+Variable to configure database connection string (alternatively .env file can be used) (eg. SYMFONY_APP_DATABASE_URL=mysql://database_name:database_secret@database_host:3306/database)
+### SYMFONY_APP_NAME
+Variable to set symfony app name. __REQIRED__ Variable to configure subdirectory for apache host 
