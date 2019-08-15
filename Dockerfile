@@ -18,7 +18,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         postfix \
         cron \
         vim \
-        pdftk \
         inetutils-syslogd \
         libxrender1 \
         libfontconfig1 \
