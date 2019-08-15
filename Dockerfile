@@ -10,7 +10,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         libxml2-dev \
         libicu-dev \
         wget \
-        mysql-client \
+        mariadb-client \
         unzip \
         git \
         postfix \
