@@ -1,5 +1,7 @@
 FROM php:7-apache
 MAINTAINER dieKeuleCT<koehlmeier@gmail.com>
+# install apt-utils since there seems to be an issue with the base image
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y --no-install-recommends apt-utils
 # install some extensions
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
         libfreetype6-dev \
