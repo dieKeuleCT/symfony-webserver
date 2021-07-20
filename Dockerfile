@@ -44,6 +44,6 @@ ADD startup.sh /usr/local/startup.sh
 ADD composer-setup.sh /usr/local/composer-setup.sh
 # Enable rewrite and install composer for use in symfony
 RUN a2enmod rewrite && a2enmod rpaf && a2enmod ssl 
-# RUN chmod a+x /usr/local/composer-setup.sh && /usr/local/composer-setup.sh && chmod a+x /usr/bin/composer && chmod +x /usr/local/startup.sh
+RUN chmod a+x /usr/local/composer-setup.sh && /usr/local/composer-setup.sh && chmod a+x /usr/bin/composer && chmod +x /usr/local/startup.sh
 
 CMD "/usr/local/startup.sh"

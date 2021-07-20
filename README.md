@@ -1,7 +1,7 @@
 # symfony-webserver
 
 ## supported tags
-### latest: latest php with composer and http configuration for symfony 4.x
+### latest: latest php (v 8) with composer (/usr/bin/composer) and http configuration for symfony 4.x
 ### symfony3: latest php but with http configuration for symfony 2 and symfony 3 apps
 ### php-7.1: php 7.0 branch, most recent version of PHP 7.1
 ### php-7.0: php 7.0 branch, most recent version of PHP 7.0
