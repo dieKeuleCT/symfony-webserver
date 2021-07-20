@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:8-apache
 MAINTAINER dieKeuleCT<koehlmeier@gmail.com>
 # install apt-utils since there seems to be an issue with the base image
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y --no-install-recommends apt-utils
@@ -15,7 +15,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         mariadb-client \
         unzip \
         git \
-        postfix \
         cron \
         vim \
         inetutils-syslogd \
@@ -24,9 +23,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         libapache2-mod-rpaf \
         logrotate \
         libzip-dev \
-    && docker-php-ext-install -j$(nproc) mysqli iconv intl opcache pdo pdo_mysql mbstring soap xml zip \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+        default-mta \
+    && docker-php-ext-install -j$(nproc) mysqli iconv intl opcache pdo pdo_mysql soap xml zip \
+    && docker-php-ext-configure gd  \
     && docker-php-ext-install -j$(nproc) gd
+# removed because of error mbstring (should already be included by default) #--with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 # adding some configurations for apache, php
 ADD wkhtmltopdf /usr/local/bin/wkhtmltopdf
 ADD wkhtmltoimage /usr/local/bin/wkhtmltoimage
@@ -43,6 +44,6 @@ ADD startup.sh /usr/local/startup.sh
 ADD composer-setup.sh /usr/local/composer-setup.sh
 # Enable rewrite and install composer for use in symfony
 RUN a2enmod rewrite && a2enmod rpaf && a2enmod ssl 
-RUN chmod a+x /usr/local/composer-setup.sh && /usr/local/composer-setup.sh && chmod a+x /usr/bin/composer && chmod +x /usr/local/startup.sh
+# RUN chmod a+x /usr/local/composer-setup.sh && /usr/local/composer-setup.sh && chmod a+x /usr/bin/composer && chmod +x /usr/local/startup.sh
 
 CMD "/usr/local/startup.sh"
